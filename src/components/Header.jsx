@@ -1,0 +1,17 @@
+import { Link } from "react-router-dom";
+import WalletConnect from "./WalletConnect";
+
+const Header = () => (
+  <header className="flex justify-between items-center px-6 py-4 bg-gray-100 shadow">
+    <h1 className="text-2xl font-bold">NFT Marketplace</h1>
+    <nav className="flex gap-4">
+      <Link to="/" className="hover:underline">Home</Link>
+      <Link to="/mint" className="hover:underline">Mint</Link>
+      <Link to="/explore" className="hover:underline">Explore</Link>
+      <Link to="/profile" className="hover:underline">Profile</Link>
+    </nav>
+    <WalletConnect />
+  </header>
+);
+
+export default Header;
