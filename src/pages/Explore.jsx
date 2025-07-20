@@ -125,7 +125,7 @@ import NFTCard from "../components/NFTCard";
   
 const Explore = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   const filteredNFTs =
     selectedCategory === "All"
@@ -135,7 +135,7 @@ const Explore = () => {
   const visibleNFTs = filteredNFTs.slice(0, visibleCount);
 
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 4);
+    setVisibleCount(prev => prev + 5);
   };
 
   return (
