@@ -57,7 +57,7 @@ const Explore = () => {
       <h2 className="text-2xl font-bold mb-4">Explore NFTs</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-        {listedNFTs.map(nft => (
+        {featuredNFTs.map(nft => (
           <NFTCard key={nft.id} {...nft} />
         ))}
       </div>
