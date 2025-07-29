@@ -179,7 +179,7 @@ const Explore = () => {
         <div className="text-center">
           <button
             onClick={handleLoadMore}
-            className="px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition"
+            className="px-6 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-600 transition"
           >
             Load More
           </button>
