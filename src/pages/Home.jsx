@@ -9,16 +9,16 @@ const Home = () => {
       price: "0.08",
     },
     {
-      id: 2,
-      image: "https://i.postimg.cc/XB4XHKxv/NFT-2.jpg",
-      title: "Bored Ape 2",
-      price: "0.12",
+     id: 2,
+      image: "https://i.postimg.cc/KkJhy9Hk/NFTs-3.png",
+      title: "Astronaut 4",
+      price: "0.11",
     },
     {
       id: 3,
-      image: "https://i.postimg.cc/Cds4Fm3m/NFT-3.jpg",
-      title: "Bored Ape 3",
-      price: "0.2",
+      image: "https://i.postimg.cc/gnfFdLND/NFTs-7.png",
+      title: "Astronaut 8",
+      price: "0.11",
     },
     {
       id: 4,
@@ -34,9 +34,9 @@ const Home = () => {
     },
     {
       id: 6,
-      image: "https://i.postimg.cc/JG75tjmm/NFT-6.jpg",
-      title: "Bored Ape 6",
-      price: "0.07",
+      image: "https://i.postimg.cc/wtpCR8KR/NFTs-8.png",
+      title: "Astronaut 9",
+      price: "0.17",
     },
     {
       id: 7,
