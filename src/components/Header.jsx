@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import WalletConnect from "./WalletConnect";
 
 const Header = () => (
-  <header className="flex justify-between items-center px-9 py-4 bg-grey-100 shadow bg-black-200">
+  <header className="flex justify-between items-center px-9 py-4 bg-grey-100 shadow bg-black">
     <h1 className="text-2xl font-bold text-white">One Market</h1>
     <nav className="flex gap-6 text-grey">
       <Link to="/" className="hover:underline">Home</Link>
