@@ -5,7 +5,7 @@ const NFTCard = ({ image, title, price }) => (
     <h2 className="text-xl font-semibold">{title}</h2>
     <div className="flex items-center justify-between mt-4">
       <span className="text-indigo-600 font-bold">{price} ETH</span>
-      <button className="text-white bg-gray-600 px-4 py-2 rounded hover:bg-black-600 transition">
+      <button className="text-white bg-gray-500 px-4 py-2 rounded hover:bg-black transition">
         Buy Now
       </button>
     </div>
