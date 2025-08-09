@@ -11,6 +11,7 @@ const Mint = () => {
   };
 
   return (
+  <main className="pt-20">
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">Mint a New NFT</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -20,6 +21,7 @@ const Mint = () => {
         <button className="bg-gray-500 text-white px-6 py-2 hover:bg-black rounded">Mint NFT</button>
       </form>
     </div>
+  </main>
   );
 };
 
