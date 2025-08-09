@@ -1,8 +1,7 @@
 import { ethers } from "ethers";
 
-// Load contract ABI and address (replace with yours)
 import contractABI from "../utils/contractABI.json";
-const CONTRACT_ADDRESS = "0xYourContractAddress";
+const CONTRACT_ADDRESS = "0x6d52aee07c52259cc20ff7350bfaf8102cd36c2f";
 
 export const connectWallet = async () => {
   if (window.ethereum) {
