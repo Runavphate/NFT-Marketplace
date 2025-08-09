@@ -11,9 +11,9 @@ const Mint = () => {
   };
 
   return (
-  <main className="pt-20">
+  <main className="pt-19">
     <div className="bg-black p-6">
-      <h2 className="text-xl font-bold mb-4">Mint a New NFT</h2>
+      <h2 className="text-xl text-white font-bold mb-4">Mint a New NFT</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="title" placeholder="Title" className="border px-4 py-2 w-full" onChange={handleChange} />
         <input type="url" name="imageUrl" placeholder="Image URL" className="border px-4 py-2 w-full" onChange={handleChange} />
