@@ -11,7 +11,7 @@ const Mint = () => {
   };
 
   return (
-  <main className="pt-[75px]">
+  <main className="pt-[72px]">
     <div className="bg-black p-6">
       <h2 className="text-xl text-white font-bold mb-4">Mint a New NFT</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
