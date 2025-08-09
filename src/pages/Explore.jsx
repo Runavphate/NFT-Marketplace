@@ -139,7 +139,7 @@ const Explore = () => {
   };
 
   return (
-   <main className="pt-19">
+   <main className="pt-[75px]">
     <div className="bg-black p-6">
       <h2 className="text-2xl text-white font-bold mb-2">Explore NFTs</h2>
 
