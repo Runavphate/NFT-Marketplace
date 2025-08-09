@@ -54,7 +54,7 @@ const Home = () => {
   
   return (
     <div className="p-6">
-      <h2 className=" justify-between items-center text-2xl text-white font-bold mb-4">Trending NFTs</h2>
+      <h2 className=" items-center text-2xl text-white font-bold mb-4">Trending NFTs</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {featuredNFTs.map(nft => (
           <NFTCard key={nft.id} {...nft} />
