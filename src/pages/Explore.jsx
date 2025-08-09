@@ -140,7 +140,7 @@ const Explore = () => {
 
   return (
    <main className="pt-20">
-    <div className="p-6">
+    <div className="bg-black p-6">
       <h2 className="text-2xl font-bold mb-2">Explore NFTs</h2>
 
       {/* Active Category */}
