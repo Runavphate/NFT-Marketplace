@@ -158,9 +158,9 @@ const Explore = () => {
             }}
             className={`px-4 py-2 rounded-full border ${
               selectedCategory === cat
-                ? "bg-indigo-600 text-white"
+                ? "bg-gray-500 text-white"
                 : "bg-white text-gray-700"
-            } hover:bg-indigo-100 transition`}
+            } hover:bg-black transition`}
           >
             {cat}
           </button>
@@ -179,7 +179,7 @@ const Explore = () => {
         <div className="text-center">
           <button
             onClick={handleLoadMore}
-            className="px-6 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition"
+            className="px-6 py-2 rounded-full bg-gray-500 text-white hover:bg-black transition"
           >
             Load More
           </button>
