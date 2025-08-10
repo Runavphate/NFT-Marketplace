@@ -18,7 +18,7 @@ const Mint = () => {
         <input type="text" name="title" placeholder="Title" className="border px-4 py-2 w-full" onChange={handleChange} />
         <input type="url" name="imageUrl" placeholder="Image URL" className="border px-4 py-2 w-full" onChange={handleChange} />
         <input type="text" name="metadataURI" placeholder="Metadata URI" className="border px-4 py-2 w-full" onChange={handleChange} />
-        <button className="bg-gray-500 text-white px-6 py-2 hover:bg-black rounded">Mint NFT</button>
+        <button className="bg-[#EC136D] text-white px-6 py-2 hover:bg-[#A60A4B] rounded">Mint NFT</button>
       </form>
     </div>
   </main>
