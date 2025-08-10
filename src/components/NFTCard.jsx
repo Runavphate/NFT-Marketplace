@@ -1,5 +1,5 @@
 const NFTCard = ({ image, title, price }) => (
-<div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all">
+<div className="bg-black rounded-lg shadow-md hover:shadow-xl transition-all">
   <img src={image} alt={title} className="rounded-t-lg aspect-square object-cover" />
   <div className="p-4">
     <h2 className="text-xl font-semibold">{title}</h2>
