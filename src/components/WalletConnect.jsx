@@ -14,7 +14,7 @@ const WalletConnect = () => {
   };
 
   return (
-    <button onClick={handleConnect} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-black">
+    <button onClick={handleConnect} className="bg-[#EC136D] text-white px-4 py-2 rounded hover:bg-[#A60A4B]">
       {address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "Connect Wallet"}
     </button>
   );
