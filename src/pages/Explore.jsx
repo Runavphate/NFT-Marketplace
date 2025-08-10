@@ -157,7 +157,7 @@ const Explore = () => {
               setSelectedCategory(cat);
               setVisibleCount(8);
             }}
-            className={`px-4 py-2 rounded-full border ${
+            className={`px-4 py-2 rounded-full ${
               selectedCategory === cat
                 ? "bg-[#EC136D] text-white"
                 : "bg-white text-black"
