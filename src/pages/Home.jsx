@@ -53,7 +53,7 @@ const Home = () => {
   ];
   
   return (
-    <main className="pt-[75px]">
+    <main className="pt-[72px]">
     <div className="bg-black p-6">
       <h2 className="text-2xl text-white font-bold mb-4">Trending NFTs</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
