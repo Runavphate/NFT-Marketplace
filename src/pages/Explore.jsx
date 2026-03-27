@@ -1,194 +1,90 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NFTCard from "../components/NFTCard";
+import { fetchListedNFTs } from "../services/blockchain";
 
-   const featuredNFTs = [// All NFTs
-    {
-      id: 1,
-      image: "https://i.postimg.cc/WtvnLQHd/NFT-1.jpg",
-      title: "Bored Ape 1",
-      price: "0.08",
-      category: "Apes"
-    },
-    {
-      id: 2,
-      image: "https://i.postimg.cc/XB4XHKxv/NFT-2.jpg",
-      title: "Bored Ape 2",
-      price: "0.12",
-      category: "Apes"
-    },
-    {
-      id: 3,
-      image: "https://i.postimg.cc/Cds4Fm3m/NFT-3.jpg",
-      title: "Bored Ape 3",
-      price: "0.2",
-      category: "Apes"
-    },
-    {
-      id: 4,
-      image: "https://i.postimg.cc/XBLqTZDk/NFT-4.jpg",
-      title: "Bored Ape 4",
-      price: "0.1",
-      category: "Apes"
-    },
-    {
-      id: 5,
-      image: "https://i.postimg.cc/D8CdGmyG/NFT-5.jpg",
-      title: "Bored Ape 5",
-      price: "0.15",
-      category: "Apes"
-    },
-    {
-      id: 6,
-      image: "https://i.postimg.cc/JG75tjmm/NFT-6.jpg",
-      title: "Bored Ape 6",
-      price: "0.07",
-      category: "Apes"
-    },
-    {
-      id: 7,
-      image: "https://i.postimg.cc/k2BNv9Bp/NFT-7.jpg",
-      title: "Bored Ape 7",
-      price: "0.09",
-      category: "Apes"
-    },
-    {
-      id: 8,
-      image: "https://i.postimg.cc/mPJYdq92/NFT-8.jpg",
-      title: "Bored Ape 8",
-      price: "0.11",
-      category: "Apes"
-    },
-       {
-      id: 9,
-      image: "https://i.postimg.cc/34KQVMnQ/NFTs-1.jpg",
-      title: "Astronaut 1",
-      price: "0.19",
-      category: "Space"
-    },
-          {
-      id: 10,
-      image: "https://i.postimg.cc/SXLpgQLG/NFTs-1.png",
-      title: "Astronaut 2",
-      price: "0.17",
-      category: "Space"
-    },
-          {
-      id: 11,
-      image: "https://i.postimg.cc/bdwjRhZQ/NFTs-2.png",
-      title: "Astronaut 3",
-      price: "0.22",
-      category: "Space"
-    },
-          {
-      id: 12,
-      image: "https://i.postimg.cc/KkJhy9Hk/NFTs-3.png",
-      title: "Astronaut 4",
-      price: "0.11",
-      category: "Space"
-    },
-          {
-      id: 13,
-      image: "https://i.postimg.cc/SnC0KQPp/NFTs-4.png",
-      title: "Astronaut 5",
-      price: "0.23",
-      category: "Space"
-    },
-          {
-      id: 14,
-      image: "https://i.postimg.cc/crKyVBMC/NFTs-5.png",
-      title: "Astronaut 6",
-      price: "0.10",
-      category: "Space"
-    },
-          {
-      id: 15,
-      image: "https://i.postimg.cc/NLCvJzXZ/NFTs-6.png",
-      title: "Astronaut 7",
-      price: "0.16",
-      category: "Space"
-    },
-          {
-      id: 16,
-      image: "https://i.postimg.cc/gnfFdLND/NFTs-7.png",
-      title: "Astronaut 8",
-      price: "0.11",
-      category: "Space"
-    },
-          {
-      id: 17,
-      image: "https://i.postimg.cc/wtpCR8KR/NFTs-8.png",
-      title: "Astronaut 9",
-      price: "0.17",
-      category: "Space"
-    },
-  ];
-  
+const SkeletonCard = () => (
+  <div className="glass rounded-2xl overflow-hidden">
+    <div className="shimmer aspect-square w-full" />
+    <div className="p-4 space-y-3">
+      <div className="shimmer h-4 rounded w-3/4" />
+      <div className="shimmer h-3 rounded w-1/2" />
+      <div className="shimmer h-9 rounded-xl" />
+    </div>
+  </div>
+);
+
 const Explore = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [nfts, setNfts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [search, setSearch] = useState("");
 
-  const filteredNFTs =
-    selectedCategory === "All"
-      ? featuredNFTs
-      : featuredNFTs.filter(nft => nft.category === selectedCategory);
+  useEffect(() => {
+    const loadNFTs = async () => {
+      try {
+        const listed = await fetchListedNFTs();
+        setNfts(listed.reverse());
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load NFTs from blockchain.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadNFTs();
+  }, []);
 
-  const visibleNFTs = filteredNFTs.slice(0, visibleCount);
-
-  const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 4);
-  };
+  const filtered = nfts.filter(nft =>
+    nft.title?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-   <main className="pt-[72px]">
-    <div className="bg-black p-6">
-      <h2 className="text-2xl text-white font-bold mb-2">Explore NFTs</h2>
-
-      {/* Active Category */}
-      <p className="text-sm text-gray-500 mb-4">
-        Showing <span className="font-medium">{selectedCategory}</span> — {visibleNFTs.length} of {filteredNFTs.length} items
-      </p>
-
-      {/* Category Filters */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        {["All", "Apes", "Space"].map(cat => (
-          <button
-            key={cat}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setVisibleCount(8);
-            }}
-            className={`px-4 py-2 rounded-full ${
-              selectedCategory === cat
-                ? "bg-[#EC136D] text-white"
-                : "bg-white text-black"
-            } hover:bg-[#A60A4B] transition`}
-          >
-            {cat}
-          </button>
-        ))}
+    <main className="min-h-screen pt-28 pb-20 px-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-white mb-2">Explore NFTs</h1>
+        <p className="text-gray-500">Browse all listed NFTs on the marketplace</p>
       </div>
 
-      {/* NFT Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 gap-4 mb-6">
-        {visibleNFTs.map(nft => (
-          <NFTCard key={nft.id} {...nft} size="sm" />
-        ))}
+      {/* Search bar */}
+      <div className="relative mb-8 max-w-md">
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">🔍</span>
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="input-field pl-10"
+        />
       </div>
 
-      {/* Load More Button */}
-      {visibleCount < filteredNFTs.length && (
-        <div className="text-center">
-          <button
-            onClick={handleLoadMore}
-            className="px-6 py-2 rounded-full bg-[#EC136D] text-white hover:bg-[#A60A4B] transition"
-          >
-            Load More
-          </button>
+      {/* Grid */}
+      {loading ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {[...Array(8)].map((_, i) => <SkeletonCard key={i} />)}
         </div>
+      ) : error ? (
+        <div className="glass rounded-2xl p-12 text-center text-gray-400">{error}</div>
+      ) : filtered.length === 0 ? (
+        <div className="glass rounded-2xl p-20 text-center">
+          <div className="text-5xl mb-4">🔮</div>
+          <h3 className="text-white font-semibold mb-2">
+            {search ? `No results for "${search}"` : "No NFTs listed yet"}
+          </h3>
+          <p className="text-gray-500 text-sm">
+            {search ? "Try a different search term" : "Be the first to mint and list an NFT!"}
+          </p>
+        </div>
+      ) : (
+        <>
+          <p className="text-gray-500 text-sm mb-4">{filtered.length} item{filtered.length !== 1 ? "s" : ""} found</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {filtered.map(nft => <NFTCard key={nft.id} {...nft} />)}
+          </div>
+        </>
       )}
-    </div>
-   </main>
+    </main>
   );
 };
 
-export default Explore
+export default Explore;

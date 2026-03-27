@@ -1,21 +1,24 @@
-import { useState } from "react";
-import { connectWallet } from "../services/blockchain";
+import { useWallet } from "../context/WalletContext";
 
 const WalletConnect = () => {
-  const [address, setAddress] = useState("");
+  const { address, connect } = useWallet();
 
   const handleConnect = async () => {
     try {
-      const account = await connectWallet();
-      setAddress(account);
+      await connect();
     } catch (err) {
-      alert("Wallet not detected");
+      alert("Wallet not detected or connection rejected");
     }
   };
 
   return (
-    <button onClick={handleConnect} className="bg-[#EC136D] text-white px-4 py-2 rounded hover:bg-[#A60A4B]">
-      {address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "Connect Wallet"}
+    <button
+      onClick={handleConnect}
+      className="btn-primary text-white px-5 py-2 rounded-full text-sm font-semibold"
+    >
+      {address
+        ? `🟢 ${address.slice(0, 6)}...${address.slice(-4)}`
+        : "Connect Wallet"}
     </button>
   );
 };
