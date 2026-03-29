@@ -23,7 +23,7 @@ body {
   background: #EC136D;
   border-radius: 3px;
 }
-
+        
 .glass {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
